@@ -1,104 +1,49 @@
 # DYLEMAT WIĘŹNIA
-Maciej Wesołowski 157115
-Piotr Wiśniewski 155784
----
+Maciej Wesołowski 157115, Piotr Wiśniewski 155784
 
-## 1. Struktura systemu
-
-### Aplikacja
-
-Aplikacja „Cookie Clicker” składa się z dwóch głównych komponentów:
-- **Frontend**: Napisany w Flutterze, umożliwia użytkownikom interakcję z grą.
-- **Backend**: Napisany w FastAPI, obsługuje logikę gry, przechowywanie stanu i komunikację z frontendem.
-
-### Główne funkcje aplikacji
-- **Klikanie**: Zwiększa liczbę ciasteczek.
-- **Ulepszenia**: Zwiększają wartość kliknięcia kosztem ciasteczek.
-- **Fabryki**: Automatycznie produkują ciasteczka.
+## 1. Struktura programu
+- index.html: Plik zawiera strukturę strony internetowej, gdzie użytkownik może wybrać strategie dla dwóch graczy, uruchomić symulację i zobaczyć wyniki.
+- styles.css: Plik zawiera style dla strony internetowej.
+- scripts.js: Plik zawiera logikę symulacji oraz obsługę interfejsu użytkownika.
+- test: Folder zawiera testy jednostkowe, integracyjne i akceptacyjne.
 
 ---
 
 ## 2. Scenariusze testów
 
-### Testy jednostkowe
+### 2.1 Testy jednostkowe
+- Testowanie funkcji strategii, np. alwaysFairStrategy, alwaysDefectStrategy, fair70Strategy, defect70Strategy, randomStrategy, titForTatStrategy, cooperateAfterFirstDefectStrategy, alternateStrategy, generousTitForTatStrategy.
 
-#### Backend
-Testy funkcji obsługujących logikę gry w FastAPI:
-1. **Test funkcji click**:
-   - Sprawdza, czy liczba ciasteczek zwiększa się o wartość kliknięcia.
-2. **Test funkcji upgrade**:
-   - Sprawdza, czy wartość kliknięcia i koszt ulepszenia są poprawnie aktualizowane.
-3. **Test funkcji buy_basic_factory**:
-   - Sprawdza, czy podstawowa fabryka jest poprawnie dodawana do stanu i liczba ciasteczek jest zmniejszana.
-4. **Test funkcji buy_advanced_factory**:
-   - Sprawdza, czy zaawansowana fabryka jest poprawnie dodawana do stanu i liczba ciasteczek jest zmniejszana.
-5. **Test funkcji reset_game**:
-   - Sprawdza, czy stan gry jest resetowany.
+### 2.2 Testy integracyjne
+- Sprawdzenie czy wybór strategii w dropdownie aktualizuje opis strategii.
+- Upewnienie się, że po kliknięciu przycisku "Rozpocznij grę" generowane są poprawne wyniki i wykresy.
+- Testowanie integracji logiki gry z wyświetlaniem wyników na stronie.
 
-#### Frontend
-Testy funkcji w aplikacji Flutter:
-1. **Test funkcji _click**:
-   - Sprawdza, czy po kliknięciu liczba ciasteczek jest aktualizowana.
-2. **Test funkcji _upgrade**:
-   - Sprawdza, czy po ulepszeniu wartość kliknięcia i koszt ulepszenia są aktualizowane.
-3. **Test funkcji _buyBasicFactory**:
-   - Sprawdza, czy po zakupie podstawowej fabryki jest ona dodawana do listy fabryk.
-4. **Test funkcji _buyAdvancedFactory**:
-   - Sprawdza, czy po zakupie zaawansowanej fabryki jest ona dodawana do listy fabryk.
-
-### Testy integracyjne
-1. **Test komunikacji między frontendem a backendem**:
-   - Sprawdza, czy frontend poprawnie komunikuje się z backendem, np. czy kliknięcia są poprawnie przetwarzane przez serwer.
-2. **Test synchronizacji stanu gry**:
-   - Sprawdza, czy stan gry na froncie jest zgodny z backendem, np. po zakupie fabryki na frontendzie liczba ciasteczek na backendzie jest aktualizowana.
-
-### Testy akceptacyjne
-1. **Scenariusz 1: Klikanie i zwiększanie liczby ciasteczek**:
-   - Użytkownik klika przycisk „Click!” i sprawdza, czy liczba ciasteczek się zwiększa.
-2. **Scenariusz 2: Ulepszanie wartości kliknięcia**:
-   - Użytkownik klika przycisk „Upgrade” i sprawdza, czy wartość kliknięcia się zwiększa oraz czy liczba ciasteczek jest odpowiednio zmniejszana.
-3. **Scenariusz 3: Zakup fabryk**:
-   - Użytkownik kupuje podstawową i zaawansowaną fabrykę, sprawdza, czy liczba ciasteczek jest odpowiednio zmniejszana oraz czy fabryki są dodawane do listy.
-
+### 2.3 Testy akceptacyjne
+- Wybór strategii dla obu graczy i rozpoczęcie gry.
+- Sprawdzenie poprawności wyświetlania wyników (czas w więzieniu dla obu graczy).
+- Weryfikacja poprawności wykresu częstotliwości zdrad.
 ---
 
 ## 3. Wykorzystane narzędzia i biblioteki
 
-### Backend
-- **FastAPI**: Framework do budowy API.
-- **Pydantic**: Walidacja danych.
-- **Uvicorn**: Serwer ASGI.
-
-### Frontend
-- **Flutter**: Framework do budowy aplikacji mobilnych.
-
-### Testy
-- **pytest**: Framework do testowania w Pythonie (backend).
-- **flutter_test**: Biblioteka do testowania w Flutterze.
+1. Biblioteka Jest
+2. Narzędzie Puppeteer
+3. jsdom
+4. Chart.js
 
 ---
 
 ## 4. Problemy i ich rozwiązania
 
-### Problemy
+1. **Problemy z wyborem strategii:**
+   - **Rozwiązanie**: Upewnienie się, że wybór strategii przez interfejs użytkownika jest poprawnie zaimplementowany i aktualizuje stan gry.
 
-1. **Problem**: Problemy z komunikacją między Flutter a FastAPI.
-   - **Rozwiązanie**: Sprawdź konfigurację CORS i upewnij się, że adresy URL są prawidłowe.
-
-2. **Problem**: Błędy synchronizacji stanu.
-   - **Rozwiązanie**: Używaj setState w Flutterze, aby upewnić się, że stan aplikacji jest aktualizowany po każdej interakcji.
-
-3. **Problem**: Opóźnienia w komunikacji.
-   - **Rozwiązanie**: Użyj narzędzi do debugowania sieci, aby zidentyfikować i naprawić problemy z opóźnieniami.
-
+2. **Problemy z asynchronicznym ładowaniem zawartości:**
+   - **Rozwiązanie**: Używanie waitForFunction w Puppeteer do oczekiwania na aktualizacje interfejsu po interakcjach użytkownika.
+     
+3. **Problemy z wydajnością wykresów:**
+   - **Rozwiązanie**: Monitorowanie wydajności generowania wykresów przy dużych ilościach danych (np. 1000 rund gry).
 ### Podsumowanie
 
-Dzięki tej dokumentacji możesz zintegrować testy jednostkowe, integracyjne i akceptacyjne z aplikacją „Cookie Clicker”, co zapewni lepszą jakość i stabilność oprogramowania.
-
----
-
-### Raporty i pliki
-
-- `report.html`: Wynik testu jednostkowego w Pythonie.
-- `test_results.txt`: Wyniki testu jednostkowego w Dart/Flutter.
-- `test_result_integration.txt`: Wyniki testu integracyjnego Flutter-Flutter.
+W powyższej dokumentacji przedstawiono strukturę programu, scenariusze testów oraz wykorzystane narzędzia i biblioteki. Dzięki testom jednostkowym, integracyjnym i akceptacyjnym możemy sprawdzić poprawność działania programu.
