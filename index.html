@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dylemat więźnia</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <div class="player" id="player1">
+        <h2>Gracz 1</h2>
+        <select id="strategy1">
+          <option value="alwaysFairStrategy">Zawsze fair</option>
+          <option value="alwaysDefectStrategy">Zawsze nie fair</option>
+          <option value="fair70Strategy">Fair na 70%</option>
+          <option value="defect70Strategy">Nie fair na 70%</option>
+          <option value="randomStrategy">50/50</option>
+          <option value="titForTatStrategy">Oko za oko</option>
+          <option value="cooperateAfterFirstDefectStrategy">Do pierwszej zdrady</option>
+          <option value="alternateStrategy">Na zmiane</option>
+          <option value="generousTitForTatStrategy">Wybaczający czasem zdrade</option>
+        </select>
+        <p id="strategy1Description"></p>
+      </div>
+      <button id="startButton">Rozpocznij grę</button>
+      <div class="player" id="player2">
+        <h2>Gracz 2</h2>
+        <select id="strategy2">
+          <option value="alwaysFairStrategy">Zawsze fair</option>
+          <option value="alwaysDefectStrategy">Zawsze nie fair</option>
+          <option value="fair70Strategy">Fair na 70%</option>
+          <option value="defect70Strategy">Nie fair na 70%</option>
+          <option value="randomStrategy">50/50</option>
+          <option value="titForTatStrategy">Oko za oko</option>
+          <option value="cooperateAfterFirstDefectStrategy">Do pierwszej zdrady</option>
+          <option value="alternateStrategy">Na zmiane</option>
+          <option value="generousTitForTatStrategy">Wybaczający czasem zdrade</option>
+        </select>
+        <p id="strategy2Description"></p>
+      </div>
+    </div>
+    <div class="right-side">
+      <h3>Rezultat:</h3>
+      <p id="results"></p>
+      <canvas id="resultsChart"></canvas>
+      <h3>Częstotliwość dokonywania zdrady:</h3>
+      <canvas id="betrayalFrequencyChart"></canvas> 
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
