@@ -5,7 +5,9 @@ Maciej Wesołowski 157115, Piotr Wiśniewski 155784
 - index.html: Plik zawiera strukturę strony internetowej, gdzie użytkownik może wybrać strategie dla dwóch graczy, uruchomić symulację i zobaczyć wyniki.
 - styles.css: Plik zawiera style dla strony internetowej.
 - scripts.js: Plik zawiera logikę symulacji oraz obsługę interfejsu użytkownika.
-- test: Folder zawiera testy jednostkowe, integracyjne i akceptacyjne.
+- integration.test.js: Testy integracyjne i akceptacyjne.
+- acceptance.test.js: Testy akceptacyjne.
+- strategies.test.js: Testy jednostkowe.
 
 ---
 
